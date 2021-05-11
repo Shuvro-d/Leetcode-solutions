@@ -1,0 +1,8 @@
+ int myAtoi(string s) {
+         stringstream geek(s);
+        int x = 0;
+        geek >> x;
+        if(x<INT_MIN)x=INT_MIN;
+        if(x>INT_MAX)x=INT_MAX;
+        return x;
+    }
