@@ -1,0 +1,24 @@
+ int countPrimes(int n) {
+         if(n==1 or n==0 or n==2)return 0;
+        int status[5000001];
+        for(int i = 2; i <n>>1; i++ )
+            status[i] = 0;
+        int  sqrtN = int( sqrt((double) n ));
+        for(int i = 3; i <= sqrtN; i+=2 )
+        {
+            if( status[i>>1] == 0 )
+            {
+                for(int  j = i * i; j < n; j += i+i )
+                    status[j>>1] = 1;
+            }
+        }
+        int num=1;
+           for(int i = 3; i < n; i+=2 )
+        {
+            if( status[i>>1] == 0 )
+            {
+                num++;
+            }
+        }
+        return num;
+    }
