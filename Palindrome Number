@@ -1,0 +1,15 @@
+bool isPalindrome(int x) {
+        vector<int>v;
+        if(x<0)return false;
+        while(x>0)
+        {
+            v.push_back(x%10);
+            x=x/10;
+        }
+        bool flag=true;
+        for(int i=0,j=v.size()-1;i<v.size()/2;i++,j--)
+        {
+            if(v[i]!=v[j])return false;
+        }
+        return true;
+    }
