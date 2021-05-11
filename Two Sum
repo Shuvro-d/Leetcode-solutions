@@ -1,0 +1,14 @@
+vector<int> twoSum(vector<int>& nums, int target) {
+         vector<int>ara(2);
+       map<int,int>m;
+       for(int i=0,sz=nums.size();i<sz;i++)m[nums[i]]=i;
+       for(int i=0,sz=nums.size();i<sz;i++){
+           int sub=target-nums[i];
+           if(m[sub]>0 and i!=m[sub]){
+               ara[0]=i;
+               ara[1]=m[sub];
+               break;
+           }
+       }
+       return ara;
+    }
