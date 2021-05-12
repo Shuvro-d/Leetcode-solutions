@@ -1,0 +1,78 @@
+string longestPalindrome(string s) {
+        string res;
+        if(s.size()==0 or s.size()==1)res=s;
+        else if(s.size()==2 and s[0]==s[1])res=s;
+        else if(s.size()==2 and s[0]!=s[1])
+        {
+            char c=s[0];
+             string s1(1,c);
+            res=s1;
+        }
+        else if(s.size()>=3)
+        {
+            vector<vector<char>>v;
+            for(int i=0;i<s.size();i++)
+            {
+                vector<char>x;
+                int a=i-1;
+                int b=i+1;
+                while(a>=0 and b<s.size())
+                {
+                    if(s[a]==s[b]){
+                        a--;
+                        b++;
+                    }
+                    else {
+                             break;
+                    }
+                }
+                a++;
+                b--;
+                for(int k=a;k<=b;k++){
+                    x.push_back(s[k]);
+                }
+                v.push_back(x);
+            }
+
+            for(int i=0;i<s.size()-1;i++)
+            {
+                vector<char>x;
+                int a=i;
+                int b=i+1;
+                while(a>=0 and b<s.size())
+                {
+                    if(s[a]==s[b]){
+                        a--;
+                        b++;
+                    }
+                    else {
+                             break;
+                    }
+                }
+                a++;
+                b--;
+                for(int k=a;k<=b;k++){
+                    x.push_back(s[k]);
+                }
+                v.push_back(x);
+            }
+            vector<string>ans;
+            int mx=0;
+             for(int i=0;i<v.size();i++)
+            {
+               string ss(v[i].begin(),v[i].end());
+               int xx=ss.size();
+               if(xx>0){
+                    ans.push_back(ss);
+                    mx=max(mx,xx);
+               }
+            }
+            for(int i=0;i<ans.size();i++)
+                if(ans[i].size()==mx)
+                {
+                    res=ans[i];
+                    break;
+                }      
+        }
+        return res;
+    }
