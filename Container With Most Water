@@ -1,0 +1,16 @@
+int maxArea(vector<int>& height) {
+        int ans=0;
+        int sz=height.size();
+        int i=0;
+        int j=sz-1;
+        while(i<j)
+        {
+            int a=height[i];
+            int b=height[j];
+            int d=j-i;
+            ans=max(ans,min(a,b)*d);
+            if(b>a)i++;
+            else j--;
+        }
+        return ans;
+    }
